@@ -14,3 +14,4 @@ lerna-debug.log*
 .pnpm-debug.log*
 
 .env
+.env.*
