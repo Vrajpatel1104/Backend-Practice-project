@@ -1,5 +1,5 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-import  {ApiError} from "../utils/ApiError.js"
+import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js"
@@ -42,7 +42,7 @@ export const registerUser = asyncHandler(async (req, res) => {
   })
 
   const createdUser = await User.findById(user._id).select(
-    "-password -refreshToken"
+    "-password -refreshToken" //Here we have to declare the fields which we don't want to send in response, so we are excluding password and refreshToken from the response
   )
 
   if (!createdUser) throw new ApiError(500, "Faild to register user");
